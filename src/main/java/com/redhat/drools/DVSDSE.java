@@ -89,6 +89,7 @@ public class DVSDSE {
 		System.out.println("Calculated RiskScore for \""+((DynamicEntity)creditApplication.get("applicant")).get("name")+"\": "+
 				(creditApplication.get("riskScore") == null ? "not granted" :  creditApplication.get("riskScore").toString()));        	
 		System.out.println("########## Expected Result: "+expcetedValue);
+		System.out.println();
 	}
     
     @SuppressWarnings("unused")
