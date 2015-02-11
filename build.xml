@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project default="create_run_jar" name="Create Runnable Jar for Project StandaloneDroolsVM with libraries in sub-folder">
+    <!--this file was created by Eclipse Runnable JAR Export Wizard-->
+    <!--ANT 1.7 is required                                        -->
+    <target name="create_run_jar">
+        <jar destfile="build/dvsdse.jar">
+            <manifest>
+                <attribute name="Main-Class" value="com.redhat.drools.DVSDSE"/>
+                <attribute name="Class-Path" value=". dvsdse_lib/com.sun.tools.xjc_2.2.0.jar dvsdse_lib/com.sun.xml.bind_2.2.0.v201004141950.jar dvsdse_lib/eclipselink.jar dvsdse_lib/javax.activation_1.1.0.v201108011116.jar dvsdse_lib/javax.mail_1.4.0.v201005080615.jar dvsdse_lib/javax.xml.bind_2.2.0.v201105210648.jar dvsdse_lib/javax.xml.stream_1.0.1.v201004272200.jar dvsdse_lib/antlr-runtime.jar dvsdse_lib/drools-compiler.jar dvsdse_lib/drools-core.jar dvsdse_lib/drools-decisiontables.jar dvsdse_lib/drools-jsr94.jar dvsdse_lib/drools-templates.jar dvsdse_lib/jbpm-bpmn2.jar dvsdse_lib/jbpm-flow-builder.jar dvsdse_lib/jbpm-flow.jar dvsdse_lib/jsr94.jar dvsdse_lib/junit.jar dvsdse_lib/kie-api.jar dvsdse_lib/kie-internal.jar dvsdse_lib/mvel2.jar dvsdse_lib/org.eclipse.jdt.core_3.10.0.v20140902-0626.jar dvsdse_lib/poi-ooxml.jar dvsdse_lib/poi.jar dvsdse_lib/protobuf-java.jar dvsdse_lib/slf4j-api.jar dvsdse_lib/slf4j-nop-1.7.9.jar dvsdse_lib/xmlpull.jar dvsdse_lib/xpp3_min.jar dvsdse_lib/xstream.jar"/>
+            </manifest>
+            <fileset dir="target"/>
+        </jar>
+        <delete dir="build/dvsdse_lib"/>
+        <mkdir dir="build/dvsdse_lib"/>
+        <copy file="lib/eclipselink/com.sun.tools.xjc_2.2.0.jar" todir="build/dvsdse_lib"/>
+        <copy file="lib/eclipselink/com.sun.xml.bind_2.2.0.v201004141950.jar" todir="build/dvsdse_lib"/>
+        <copy file="lib/eclipselink/eclipselink.jar" todir="build/dvsdse_lib"/>
+        <copy file="lib/eclipselink/javax.activation_1.1.0.v201108011116.jar" todir="build/dvsdse_lib"/>
+        <copy file="lib/eclipselink/javax.mail_1.4.0.v201005080615.jar" todir="build/dvsdse_lib"/>
+        <copy file="lib/eclipselink/javax.xml.bind_2.2.0.v201105210648.jar" todir="build/dvsdse_lib"/>
+        <copy file="lib/eclipselink/javax.xml.stream_1.0.1.v201004272200.jar" todir="build/dvsdse_lib"/>
+        <copy file="lib/drools/antlr-runtime.jar" todir="build/dvsdse_lib"/>
+        <copy file="lib/drools/drools-compiler.jar" todir="build/dvsdse_lib"/>
+        <copy file="lib/drools/drools-core.jar" todir="build/dvsdse_lib"/>
+        <copy file="lib/drools/drools-decisiontables.jar" todir="build/dvsdse_lib"/>
+        <copy file="lib/drools/drools-jsr94.jar" todir="build/dvsdse_lib"/>
+        <copy file="lib/drools/drools-templates.jar" todir="build/dvsdse_lib"/>
+        <copy file="lib/drools/jbpm-bpmn2.jar" todir="build/dvsdse_lib"/>
+        <copy file="lib/drools/jbpm-flow-builder.jar" todir="build/dvsdse_lib"/>
+        <copy file="lib/drools/jbpm-flow.jar" todir="build/dvsdse_lib"/>
+        <copy file="lib/drools/jsr94.jar" todir="build/dvsdse_lib"/>
+        <copy file="lib/drools/junit.jar" todir="build/dvsdse_lib"/>
+        <copy file="lib/drools/kie-api.jar" todir="build/dvsdse_lib"/>
+        <copy file="lib/drools/kie-internal.jar" todir="build/dvsdse_lib"/>
+        <copy file="lib/drools/mvel2.jar" todir="build/dvsdse_lib"/>
+        <copy file="lib/drools/org.eclipse.jdt.core_3.10.0.v20140902-0626.jar" todir="build/dvsdse_lib"/>
+        <copy file="lib/drools/poi-ooxml.jar" todir="build/dvsdse_lib"/>
+        <copy file="lib/drools/poi.jar" todir="build/dvsdse_lib"/>
+        <copy file="lib/drools/protobuf-java.jar" todir="build/dvsdse_lib"/>
+        <copy file="lib/drools/slf4j-api.jar" todir="build/dvsdse_lib"/>
+        <copy file="lib/drools/slf4j-nop-1.7.9.jar" todir="build/dvsdse_lib"/>
+        <copy file="lib/drools/xmlpull.jar" todir="build/dvsdse_lib"/>
+        <copy file="lib/drools/xpp3_min.jar" todir="build/dvsdse_lib"/>
+        <copy file="lib/drools/xstream.jar" todir="build/dvsdse_lib"/>
+        <mkdir dir="build/examples/excel-file"/>
+        <copy file="examples/CreditApplication.xsd" todir="build/examples"/>
+        <copy file="examples/CreditApplication_500k.xml" todir="build/examples"/>
+        <copy file="examples/excel-file/CreditCheck_0.0.1.xls" todir="build/examples/excel-file"/>
+    </target>
+</project>

@@ -2,6 +2,7 @@ package com.redhat.drools;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FilenameFilter;
 import java.math.BigDecimal;
 import java.util.HashMap;
@@ -30,8 +31,9 @@ import org.kie.api.runtime.KieSession;
 public class DVSDSE {
 	
 	// TODO - Make those configurable
-	private static final String CREDIT_APPLICATION_XSD = "/Users/kai/redhat/workspace8/StandaloneDroolsVM/examples/CreditApplication.xsd";
-	private static final String CREDIT_APPLICATION_DATA = "/Users/kai/redhat/workspace8/StandaloneDroolsVM/examples/CreditApplication_500k.xml";
+	private static final String CREDIT_APPLICATION_XSD = "examples/CreditApplication.xsd";
+	private static final String CREDIT_APPLICATION_DATA = "examples/CreditApplication_500k.xml";
+	private static final String RULE_STORE_PATH = "examples/excel-file";
 	
 	private DVSDSEConfig config;
 		
@@ -48,7 +50,7 @@ public class DVSDSE {
         			"standaloneSession",
         			"0.0.1",
         			"CreditCheck",
-        			new File("/Users/kai/redhat/MyRuleStore")
+        			new File(RULE_STORE_PATH)
         	);
         	// -- 
         	
@@ -58,23 +60,36 @@ public class DVSDSE {
         	
         	DynamicOverride myApplicant = new DynamicOverride("Person");
         	myApplicant.put("name", "Andreas Roppel");
-        	myApplicant.put("creditScore", 99.5D);
+        	myApplicant.put("creditScore", 99.0D);
         	
         	overrides.put("applicant", myApplicant);
         	// --
         	
-        	// Run the engine and print out the results
+        	// Run the engine with overrides and print out the results
+        	System.out.println("########## First test with programatic overrides - uses 600k with score < 90.1");
+        	
         	DynamicEntity creditApplication = new DVSDSE(defaultConfig).run(overrides);
-
-        	System.out.println("Calculated RiskScore for \""+myApplicant.getFromEntity("name")+"\": "+
-        			(creditApplication.get("riskScore") == null ? "not granted" :  creditApplication.get("riskScore").toString()));        	
+        	printResult(creditApplication, "Credit not granted for Andreas Roppel");
         	// --
-    	
+        	
+        	// Run the engine without overrides and print out the results
+        	System.out.println("########## Second test without programatic overrides - uses ./examples/CreditApplication_500k.xml");
+        	
+        	creditApplication = new DVSDSE(defaultConfig).run();
+        	printResult(creditApplication,"RiskScore of 30 for Kai Wegner");
+        	// --
+        	
     	}
     	catch(Throwable t) {
     		throw t;
     	}
     }
+
+	private static void printResult(DynamicEntity creditApplication, String expcetedValue) {
+		System.out.println("Calculated RiskScore for \""+((DynamicEntity)creditApplication.get("applicant")).get("name")+"\": "+
+				(creditApplication.get("riskScore") == null ? "not granted" :  creditApplication.get("riskScore").toString()));        	
+		System.out.println("########## Expected Result: "+expcetedValue);
+	}
     
     @SuppressWarnings("unused")
 	private DynamicEntity run() throws Throwable {
@@ -122,7 +137,12 @@ public class DVSDSE {
     	Thread.currentThread().setContextClassLoader(dynamicJAXBContext.getDynamicClassLoader());
     	// -- 
     	
-        /*
+    	// Some error handling regarding the rule store directory
+    	if(!config.getStoreDirectory().exists()) throw new FileNotFoundException("Could not find rule store directory "+config.getStoreDirectory().getAbsolutePath());
+    	else if(config.getStoreDirectory().listFiles().length <= 0) throw new Exception("Could not find rule files in "+config.getStoreDirectory().getAbsolutePath());
+    	//--
+
+    	/*
          *  Create a new KIE-Module by create a virtual KieFileSystem and
          *  add files from RULE_STORE_PATH based on RULE_NAME and RULE_VERSION 
          *  (via a simple FileNameFilter - see RuleDirectoryFilter)
