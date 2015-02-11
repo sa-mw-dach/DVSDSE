@@ -1,0 +1,10 @@
+<CreditApplication>
+	<applicant>
+		<age>31</age>
+		<name>Kai Wegner</name>
+		<creditScore>99.8</creditScore>
+		<foreignCredits>2</foreignCredits>
+		<payoffCredits>0</payoffCredits>
+	</applicant>
+	<amount>500000</amount>
+</CreditApplication>
