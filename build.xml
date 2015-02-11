@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <project default="create_run_jar" name="Create Runnable Jar for Project StandaloneDroolsVM with libraries in sub-folder">
     <!--this file was created by Eclipse Runnable JAR Export Wizard-->
-    <!--ANT 1.7 is required                                        -->
+    <!--ANT 1.7 is required
+                                    -->
     <target name="create_run_jar">
+        <delete dir="target"/>
+        <mkdir dir="target"/>
         <javac srcdir="src/main/java"
-        	     destdir="target">
+        	     destdir="target"
+               includeantruntime="false">
                <classpath>
                  <fileset dir="lib/eclipselink">
                    <include name="**/*.jar" />
