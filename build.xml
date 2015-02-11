@@ -3,6 +3,17 @@
     <!--this file was created by Eclipse Runnable JAR Export Wizard-->
     <!--ANT 1.7 is required                                        -->
     <target name="create_run_jar">
+        <javac srcdir="src/main/java"
+        	     destdir="target">
+               <classpath>
+                 <fileset dir="lib/eclipselink">
+                   <include name="**/*.jar" />
+                 </fileset>
+                 <fileset dir="lib/drools">
+                   <include name="**/*.jar" />
+                 </fileset>
+               </classpath>
+        </javac>
         <jar destfile="build/dvsdse.jar">
             <manifest>
                 <attribute name="Main-Class" value="com.redhat.drools.DVSDSE"/>

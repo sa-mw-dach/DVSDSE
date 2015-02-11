@@ -76,7 +76,7 @@ public class DVSDSE {
         	System.out.println("########## Second test without programatic overrides - uses ./examples/CreditApplication_500k.xml");
         	
         	creditApplication = new DVSDSE(defaultConfig).run();
-        	printResult(creditApplication,"RiskScore of 30 for Kai Wegner");
+        	printResult(creditApplication,"RiskScore of 30.0 for Kai Wegner");
         	// --
         	
     	}
