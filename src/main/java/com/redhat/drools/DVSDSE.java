@@ -12,8 +12,6 @@ import java.util.List;
 import javax.xml.bind.JAXBElement;
 
 import org.eclipse.persistence.dynamic.DynamicEntity;
-import org.eclipse.persistence.internal.dynamic.DynamicEntityImpl;
-import org.eclipse.persistence.internal.dynamic.DynamicPropertiesManager;
 import org.eclipse.persistence.jaxb.dynamic.DynamicJAXBContext;
 import org.eclipse.persistence.jaxb.dynamic.DynamicJAXBContextFactory;
 import org.kie.api.KieServices;
@@ -177,7 +175,7 @@ public class DVSDSE {
     	
     	// Start new KIE-Session
     	KieContainer kContainer = ks.newKieContainer(ks.getRepository().getDefaultReleaseId());
-    	KieSession kSession = kContainer.newKieSession();        	
+    	KieSession kSession = kContainer.newKieSession();    
     	System.out.println("Starting to insert Objects into KIE-Session ...");
     	// --
 
