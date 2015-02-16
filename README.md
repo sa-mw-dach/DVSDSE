@@ -93,16 +93,22 @@ __No compilation__ when changing the rules (_CreditCheck_0.0.1.xls_), the domain
 
 ### First Test scenario
 #### Business Case
-Get a risk score for a $600.000 credit application with a applicant which has a credit score of 99.0. This credit application should not be granted, since credit applications above $250.000 (High Risk) need a applicant with a credit score more than 99.0.
+Get a risk score for a $600.000 credit application with a applicant which has a credit score of 99.0.
+
+This credit application should not be granted, since credit applications above $250.000 (High Risk) need a applicant with a credit score more than 99.0.
 ### Technical Aspects
 This scenario tests if a programmatic overwrite can be done.
+
 If you want to change any values here you need to change and recompile the code.
 
 ### Second Test scenario
 #### Business Case
-Get a risk score for a $500.000 credit application with a applicant which has a credit score of 99.8. This credit application should be granted with a risk score of 30.0.
+Get a risk score for a $500.000 credit application with a applicant which has a credit score of 99.8.
+
+This credit application should be granted with a risk score of 30.0.
 ### Technical Aspects
-This scenario tests if the marshalling and unmarshalling of is working. It uses the _examples/CreditApplication_500k.xml_ as data-source.
+This scenario tests if the marshalling and unmarshalling of XML / objects is working. It uses the _examples/CreditApplication_500k.xml_ as data-source.
+
 If you want to change any values here you need to change the file _examples/CreditApplication_500k.xml_ and simply re-run the _dvsdse.jar_.
 
 ## Technical Details
