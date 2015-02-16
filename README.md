@@ -1,5 +1,5 @@
 # DVSDSE - Dynamic, Very Simple Drools Standalone Engine
-__ONE JAVA-FILE TO RULE THEM ALL!__
+__ONE JAVA CLASS TO RULE THEM ALL!__
 
 This project is intented to create a very/as much as simple, but also dynamic __drools engine__ based on a XSD definition and XML with a minimum on dependencies and learning-curve.
 
