@@ -113,3 +113,12 @@ If you want to change any values here you need to change the file _examples/Cred
 
 ## Technical Details
 Inspect the source you must, Luke.
+
+# License
+GNU GENERAL PUBLIC LICENSE
+                       Version 2, June 1991
+
+ Copyright (C) 1989, 1991 Free Software Foundation, Inc., <http://fsf.org/>
+ 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
+ Everyone is permitted to copy and distribute verbatim copies
+ of this license document, but changing it is not allowed.
